@@ -10,8 +10,8 @@ class ClienteAdmin(admin.ModelAdmin):
 
 @admin.register(Pendencia)
 class PendenciaAdmin(admin.ModelAdmin):
-    list_display = ("id", "cliente", "valor", "data", "compensado")
-    list_filter = ("compensado", "cliente")
+    list_display = ("cliente", "valor", "data", "compensado")
+    list_filter = ("compensado", "cliente", "data")
     search_fields = ("cliente__nome",)
     list_editable = ("compensado",)
     date_hierarchy = "data"
