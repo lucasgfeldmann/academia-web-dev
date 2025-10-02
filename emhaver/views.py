@@ -19,8 +19,13 @@ def relatorio(request):
                 Case(When(compensado=False, then=1), output_field=IntegerField())
             ),
         )
-        .order_by("mes")
+        .order_by("-mes")
+    )
+    geral = Pendencia.objects.aggregate(
+        total_receber=Sum(
+            Case(When(compensado=False, then="valor"), output_field=DecimalField())
+        )
     )
 
-    context = {"data": data}
+    context = {"data": data, "geral": geral["total_receber"]}
     return render(request, "emhaver/relatorio.html", context)
