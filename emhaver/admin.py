@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cliente, Pendencia
+from .models import Cliente, Pendencia, FormaPagamento
 
 
 @admin.register(Cliente)
@@ -15,3 +15,9 @@ class PendenciaAdmin(admin.ModelAdmin):
     search_fields = ("cliente__nome",)
     list_editable = ("compensado",)
     date_hierarchy = "data"
+
+
+@admin.register(FormaPagamento)
+class FormaPagamentoAdmin(admin.ModelAdmin):
+    list_display = ("nome",)
+    search_fields = ("nome",)
