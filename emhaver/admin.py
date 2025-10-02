@@ -4,7 +4,7 @@ from .models import Cliente, Pendencia
 
 @admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ("id", "nome")
+    list_display = ("nome")
     search_fields = ("nome",)
 
 
